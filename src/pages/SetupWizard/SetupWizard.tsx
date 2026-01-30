@@ -13,6 +13,11 @@ import { ArtifactsComposeScreen } from './components/ArtifactsComposeScreen';
 import { CreateEventsScreen } from './components/CreateEventsScreen';
 import { FinalApprovalScreen } from './components/FinalApprovalScreen';
 
+import { MethodSelectScreen } from './components/MethodSelectScreen';
+import { TemplateSelectScreen } from './components/TemplateSelectScreen';
+import { DraftReviewScreen } from './components/DraftReviewScreen';
+import { DataSourceUploadScreen } from './components/DataSourceUploadScreen'; // Import
+
 const WizardContent: React.FC = () => {
     const { state } = useWizard();
 
@@ -20,14 +25,24 @@ const WizardContent: React.FC = () => {
         switch (state.currentScreenId) {
             case 'scr_start': return <WelcomeScreen />;
             case 'scr_status_select': return <StatusSelectScreen />;
-            case 'scr_ai_detect_existing': return <AIDetectionScreen />;
+
+            // Existing Path
+            case 'scr_ai_detection': return <AIDetectionScreen />;
             case 'scr_ai_path_decision': return <AIPathDecisionScreen />;
             case 'scr_ai_rebuild_from_existing': return <AIRebuildScreen />;
             case 'scr_ai_sufficiency_check': return <AISufficiencyCheckScreen />;
             case 'scr_ai_generate_from_past_sheets': return <AIGenerateScreen source="past_sheets" />;
             case 'scr_ai_generate_from_existing_policy': return <AIGenerateScreen source="policy" />;
+
+            // New Path Enhancements
+            case 'scr_method_select': return <MethodSelectScreen />;
+            case 'scr_template_select': return <TemplateSelectScreen />;
+            case 'scr_draft_review': return <DraftReviewScreen />;
+            case 'scr_data_source_upload': return <DataSourceUploadScreen />; // New screen mapping
+
             case 'scr_new_template_create': return <AINewProposalScreen />; // Maps to propose_new flow
             case 'scr_ai_propose_new': return <AINewProposalScreen />;
+
             case 'scr_ai_cycle_confirm': return <CycleConfirmScreen />;
             case 'scr_ai_compose_artifacts': return <ArtifactsComposeScreen />;
             case 'scr_ai_create_events': return <CreateEventsScreen />;

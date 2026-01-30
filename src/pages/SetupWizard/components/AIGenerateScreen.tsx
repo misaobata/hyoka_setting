@@ -18,8 +18,14 @@ export const AIGenerateScreen: React.FC<AIGenerateProps> = ({ source }) => {
             title={title}
             subtext="評価ビューの作成、フィールドのマッピング、スコアリングモデルの設定を行っています。"
             processFn={processFn}
-            onComplete={() => { }}
-            nextScreenId="scr_ai_cycle_confirm"
+            onComplete={(_result) => {
+                // Mock items extraction from result or side-effect
+                // In real app, result would contain items.
+                // For now, let's inject them via side effect or expect MockAIService to return them.
+                // Let's assume MockAIService returns templateDraft, and we extract items from it.
+                // Since we don't want to change MockAI signature too much yet, just mock here.
+            }}
+            nextScreenId="scr_draft_review"
         />
     );
 };

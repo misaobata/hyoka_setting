@@ -3,9 +3,12 @@ import { createRoot } from 'react-dom/client'
 import './styles/variables.css'
 import './styles/global.css'
 import App from './App.tsx'
+import { ConfigProvider } from './contexts/ConfigContext'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <ConfigProvider>
+      <App />
+    </ConfigProvider>
   </StrictMode>,
 )
