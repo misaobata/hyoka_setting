@@ -52,7 +52,14 @@ export const StatusSelectScreen: React.FC = () => {
 
             <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'center' }}>
                 <button
-                    onClick={() => goToNext('scr_ai_detect_existing')}
+                    onClick={() => {
+                        if (selected === 'existing') {
+                            goToNext('scr_data_source_upload');
+                        } else {
+                            // New Creation Flow
+                            goToNext('scr_method_select');
+                        }
+                    }}
                     style={{
                         backgroundColor: 'var(--color-primary)',
                         color: '#fff',

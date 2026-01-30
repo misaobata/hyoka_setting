@@ -10,13 +10,10 @@ export interface WizardData {
     evidenceSummary?: string;
     sufficiencyLevel?: string;
     missingItems?: string[];
-    recommendedPath?: 'from_past_sheets' | 'from_existing_policy' | 'new_template';
+    recommendedPath?: 'from_past_sheets' | 'from_existing_policy' | 'new_template' | null;
     templateDraft?: any;
-    cycleDraft?: {
-        frequency: string;
-        bonus: string;
-        events: string;
-    };
+    cycleDraft?: any;
+    generatedItems?: any[]; // For DraftReviewScreen
     eventInstancesPlan?: any[];
     // User answers
     answers: Record<string, any>;

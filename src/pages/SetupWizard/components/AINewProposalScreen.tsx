@@ -21,8 +21,17 @@ export const AINewProposalScreen: React.FC = () => {
         const result = await MockAIService.proposeNewSystem(answers);
         updateData('cycleDraft', result.cycleDraft);
 
+        // Also set some default items for the review screen based on answers
+        // (Mocking this behavior here for prototype)
+        const mockItems = [
+            { id: 1, category: '成果目標', content: '部門目標への貢献度', source: 'ai' },
+            { id: 2, category: '重要行動', content: 'チームワークと情報共有', source: 'ai' },
+            { id: 3, category: 'スキル', content: '専門性と継続学習', source: 'ai' }
+        ];
+        updateData('generatedItems', mockItems);
+
         setSubmitting(false);
-        goToNext('scr_ai_cycle_confirm');
+        goToNext('scr_draft_review');
     };
 
     if (submitting) {
